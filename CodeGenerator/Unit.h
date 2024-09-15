@@ -56,27 +56,6 @@ public:
         m_fields[ accessModifier ].push_back( unit );
     }
 
-    std::string compile( unsigned int level = 0 ) const {
-        std::string result = generateShift( level ) + "class " + m_name + " {\n";
-
-        for( size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i ) {
-            if( m_fields[ i ].empty() ) {
-                continue;
-            }
-
-            result += ACCESS_MODIFIERS[ i ] + ":\n";
-
-            for( const auto& f : m_fields[ i ] ) {
-                result += f->compile( level + 1 );
-            }
-
-            result += "\n";
-        }
-
-        result += generateShift( level ) + "};\n";
-        return result;
-    }
-
 protected:
     std::string m_name;
     using Fields = std::vector< std::shared_ptr< Unit > >;
@@ -106,32 +85,6 @@ public:
         m_body.push_back( unit );
     }
 
-    std::string compile( unsigned int level = 0 ) const {
-        std::string result = generateShift( level );
-
-        if ( m_flags & STATIC ) {
-            result += "static ";
-        } else if ( m_flags & VIRTUAL ) {
-            result += "virtual ";
-        }
-
-        result += m_returnType + " ";
-        result += m_name + "()";
-
-        if( m_flags & CONST ) {
-            result += " const";
-        }
-
-        result += " {\n";
-
-        for( const auto& b : m_body ) {
-            result += b->compile( level + 1 );
-        }
-
-        result += generateShift( level ) + "}\n";
-        return result;
-    }
-
 protected:
     std::string m_name;
     std::string m_returnType;
@@ -142,10 +95,6 @@ protected:
 class PrintOperatorUnit : public Unit {
 public:
     explicit PrintOperatorUnit( const std::string& text ) : m_text( text ) {}
-
-    std::string compile( unsigned int level = 0 ) const {
-        return generateShift( level ) + "printf( \"" + m_text + "\" );\n";
-    }
 
 protected:
     std::string m_text;

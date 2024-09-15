@@ -20,6 +20,7 @@ public:
         PROTECTED = 1 << 6,
         PRIVATE = 1 << 7
     };
+
 public:
     JavaMethodUnit(const std::string& name, const std::string& returnType, Flags flags) : MethodUnit(name, returnType, flags) {}
 
