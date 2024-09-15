@@ -7,7 +7,7 @@ class CPlusPlusClassUnit : public ClassUnit {
 public:
     CPlusPlusClassUnit(const std::string& name) : ClassUnit(name) {}
 
-    std::string complile(unsigned int level = 0) const;
+    std::string compile(unsigned int level = 0) const;
 };
 
 class CPlusPlusMethodUnit : public MethodUnit {

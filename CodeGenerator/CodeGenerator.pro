@@ -9,7 +9,9 @@ CONFIG += c++17 cmdline
 SOURCES += \
         CPlusPlusUnit.cpp \
         CSharpUnit.cpp \
+        Factory.cpp \
         JavaUnit.cpp \
+        Unit.cpp \
         main.cpp
 
 # Default rules for deployment.
@@ -20,5 +22,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     CPlusPlusUnit.h \
     CSharpUnit.h \
+    Factory.h \
     JavaUnit.h \
     Unit.h

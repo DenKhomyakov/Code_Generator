@@ -62,8 +62,6 @@ protected:
     std::vector< Fields > m_fields;
 };
 
-const std::vector< std::string > ClassUnit::ACCESS_MODIFIERS = { "public", "protected", "private" };
-
 class MethodUnit : public Unit {
 public:
     enum Modifier {
