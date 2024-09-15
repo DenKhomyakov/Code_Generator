@@ -1,6 +1,6 @@
 #include "CPlusPlusUnit.h"
 
-std::string CPlusPlusUnit::complile(unsigned int level) const {
+std::string CPlusPlusClassUnit::complile(unsigned int level) const {
     std::string result = generateShift(level) + "class" + m_name + "{\n";
 
     for (size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i) {
@@ -45,4 +45,8 @@ std::string CPlusPlusMethodUnit::compile(unsigned int level) const {
 
     result = generateShift(level) + "}\n";
     return result;
+}
+
+std::string CPlusPlusPrintOperatorUnit::compile(unsigned int level) const{
+    return generateShift(level) + "printf( \"" + m_text + "\" );\n";
 }

@@ -3,9 +3,9 @@
 
 #include "Unit.h"
 
-class CPlusPlusUnit : public ClassUnit {
+class CPlusPlusClassUnit : public ClassUnit {
 public:
-    CPlusPlusUnit(const std::string& name) : ClassUnit(name) {}
+    CPlusPlusClassUnit(const std::string& name) : ClassUnit(name) {}
 
     std::string complile(unsigned int level = 0) const;
 };
@@ -22,6 +22,12 @@ public:
     CPlusPlusMethodUnit(const std::string& name, const std::string& returnType, Flags flags) : MethodUint(name, returnType, flags){}
 
     std::string compile(unsigned int level = 0) const;
+};
+
+class CPlusPlusPrintOperatorUnit : public PrintOperatorUnit {
+    CPlusPlusPrintOperatorUnit(const std::string& text) : PrintOperatorUnit(text) {}
+
+    std::string compile (unsigned int level = 0) const;
 };
 
 #endif // CPLUSPLUSUNIT_H
