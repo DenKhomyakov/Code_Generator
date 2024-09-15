@@ -85,7 +85,7 @@ protected:
 
 const std::vector< std::string > ClassUnit::ACCESS_MODIFIERS = { "public", "protected", "private" };
 
-class MethodUint : public Unit {
+class MethodUnit : public Unit {
 public:
     enum Modifier {
         STATIC = 1,
@@ -100,7 +100,7 @@ public:
     };
 
 public:
-    MethodUint( const std::string& name, const std::string& returnType, Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags ) {}
+    MethodUnit( const std::string& name, const std::string& returnType, Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags ) {}
 
     void add( const std::shared_ptr< Unit >& unit, Flags /* flags */ = 0 ) {
         m_body.push_back( unit );

@@ -10,7 +10,7 @@ public:
     std::string complile(unsigned int level = 0) const;
 };
 
-class CPlusPlusMethodUnit : public MethodUint {
+class CPlusPlusMethodUnit : public MethodUnit {
 public:
     enum Modifier {
         STATIC = 1,
@@ -19,12 +19,13 @@ public:
     };
 
 public:
-    CPlusPlusMethodUnit(const std::string& name, const std::string& returnType, Flags flags) : MethodUint(name, returnType, flags){}
+    CPlusPlusMethodUnit(const std::string& name, const std::string& returnType, Flags flags) : MethodUnit(name, returnType, flags) {}
 
     std::string compile(unsigned int level = 0) const;
 };
 
 class CPlusPlusPrintOperatorUnit : public PrintOperatorUnit {
+public:
     CPlusPlusPrintOperatorUnit(const std::string& text) : PrintOperatorUnit(text) {}
 
     std::string compile (unsigned int level = 0) const;
