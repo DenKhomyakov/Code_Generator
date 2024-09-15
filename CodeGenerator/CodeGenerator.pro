@@ -8,6 +8,7 @@ CONFIG += c++17 cmdline
 
 SOURCES += \
         CPlusPlusUnit.cpp \
+        CSharpUnit.cpp \
         JavaUnit.cpp \
         main.cpp
 
@@ -18,5 +19,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     CPlusPlusUnit.h \
+    CSharpUnit.h \
     JavaUnit.h \
     Unit.h
