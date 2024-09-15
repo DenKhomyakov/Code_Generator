@@ -28,6 +28,7 @@ public:
 };
 
 class JavaPrintOperatorUnit : public PrintOperatorUnit {
+public:
     JavaPrintOperatorUnit(const std::string& text) : PrintOperatorUnit(text) {}
 
     std::string compile (unsigned int level = 0) const;

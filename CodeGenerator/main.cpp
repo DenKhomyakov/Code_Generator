@@ -31,9 +31,17 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    CPlusPlusFactory plusPlusFactory;
-    std::cout << generateProgram(&plusPlusFactory) << std::endl;
+    std::cout << "C++:" << std::endl;
+    CPlusPlusFactory cPlusPlusFactory;
+    std::cout << generateProgram(&cPlusPlusFactory) << std::endl;
 
+    std::cout << "Java:" << std::endl;
+    JavaFactory javaFactory;
+    std::cout << generateProgram(&javaFactory) << std::endl;
+
+    std::cout << "C#:" << std::endl;
+    CSharpFactory cSharpFactory;
+    std::cout << generateProgram(&cSharpFactory) << std::endl;
 
     return a.exec();
 }

@@ -16,4 +16,16 @@ class CPlusPlusFactory : public AbstractFactory {
     std::shared_ptr<PrintOperatorUnit> buildPrintOperator(const std::string& text);
 };
 
+class JavaFactory : public AbstractFactory {
+    std::shared_ptr<ClassUnit> buildClass(const std::string& name);
+    std::shared_ptr<MethodUnit> buildMethod(const std::string& name, const std::string& returnType, Unit::Flags flags);
+    std::shared_ptr<PrintOperatorUnit> buildPrintOperator(const std::string& text);
+};
+
+class CSharpFactory : public AbstractFactory {
+    std::shared_ptr<ClassUnit> buildClass(const std::string& name);
+    std::shared_ptr<MethodUnit> buildMethod(const std::string& name, const std::string& returnType, Unit::Flags flags);
+    std::shared_ptr<PrintOperatorUnit> buildPrintOperator(const std::string& text);
+};
+
 #endif // FACTORY_H
