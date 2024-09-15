@@ -1,7 +1,7 @@
 #include "CSharpUnit.h"
 
 std::string CSharpClassUnit::compile(unsigned int level) const {
-    std::string result = generateShift(level) + "class" + m_name + "{\n";
+    std::string result = generateShift(level) + "class " + m_name + " {\n";
 
     for (size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i) {
         if (m_fields[i].empty()) {
@@ -13,7 +13,7 @@ std::string CSharpClassUnit::compile(unsigned int level) const {
         }
     }
 
-    result = generateShift(level) + "}\n\n";
+    result += generateShift(level) + "}\n\n";
     return result;
 }
 
@@ -21,26 +21,26 @@ std::string CSharpMethodUnit::compile(unsigned int level) const {
     std::string result = generateShift(level);
 
     if (m_flags & PUBLIC) {
-        result += "public";
+        result += "public ";
     } else if (m_flags & PROTECTED) {
-        result += "protected";
+        result += "protected ";
     } else if (m_flags & PRIVATE) {
-        result += "private";
+        result += "private ";
     } else if (m_flags & INTERNAL) {
-        result += "internal";
+        result += "internal ";
     }
 
     if (m_flags & STATIC) {
-        result += "static";
+        result += "static ";
     } else if (m_flags & CONST) {
-        result += "const";
+        result += "const ";
     } else if (m_flags & VIRTUAL) {
-        result += "virtual";
+        result += "virtual ";
     }
 
     result += m_returnType + " ";
     result += m_name + "()";
-    result += "{\n";
+    result += " {\n";
 
     for (const auto& b : m_body) {
         result += b->compile(level + 1);

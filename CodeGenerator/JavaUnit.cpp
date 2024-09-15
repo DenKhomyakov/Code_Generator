@@ -1,7 +1,7 @@
 #include "JavaUnit.h"
 
 std::string JavaClassUnit::compile(unsigned int level) const {
-    std::string result = generateShift(level) + "class" + m_name + "{\n";
+    std::string result = generateShift(level) + "class " + m_name + " {\n";
 
     for (size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i) {
         if (m_fields[i].empty()) {
@@ -9,11 +9,11 @@ std::string JavaClassUnit::compile(unsigned int level) const {
         }
 
         for (const auto& f : m_fields[i]) {
-            result = f->compile(level + 1);
+            result += f->compile(level + 1);
         }
     }
 
-    result = generateShift(level) + "};\n\n";
+    result += generateShift(level) + "};\n\n";
     return result;
 }
 
@@ -21,30 +21,28 @@ std::string JavaMethodUnit::compile(unsigned int level) const {
     std::string result = generateShift(level);
 
     if (m_flags & PUBLIC) {
-        result += "ppublic";
+        result += "public ";
     } else if (m_flags & PROTECTED) {
-        result += "protected";
+        result += "protected ";
     } else if (m_flags & PRIVATE) {
-        result += "private";
+        result += "private ";
     }
 
     if (m_flags & STATIC) {
-        result += "static";
+        result += "static ";
     } else if (m_flags & FINAL) {
-        result += "final";
-    } else if (m_flags & ABSTRACT) {
-        result += "abstract";
+        result += "final ";
     }
 
-    result = m_returnType + " ";
-    result = m_name + "()";
-    result += "{\n";
+    result += m_returnType + " ";
+    result += m_name + "()";
+    result += " {\n";
 
     for (const auto& b : m_body) {
-        result = b->compile(level + 1);
+        result += b->compile(level + 1);
     }
 
-    result = generateShift(level) + "}\n";
+    result += generateShift(level) + "}\n";
     return result;
 }
 
