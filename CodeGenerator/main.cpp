@@ -2,7 +2,7 @@
 #include "Factory.h"
 #include "Unit.h"
 
-std::string generateProgram(AbstractFactory* factory) {
+std::string generateProgram(IAbstractFactory* factory) {
     std::shared_ptr<ClassUnit> myClass = factory->buildClass("MyClass");
 
     myClass->add(
