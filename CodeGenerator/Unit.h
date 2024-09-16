@@ -46,7 +46,7 @@ public:
         m_fields.resize( ACCESS_MODIFIERS.size() );
     }
 
-    void add( const std::shared_ptr< Unit >& unit, Flags flags ) {
+    void add( const std::shared_ptr< Unit >& unit, Flags flags ) override {
         int accessModifier = PRIVATE;
 
         if( flags < ACCESS_MODIFIERS.size() ) {
@@ -79,7 +79,7 @@ public:
 public:
     MethodUnit( const std::string& name, const std::string& returnType, Flags flags ) : m_name( name ), m_returnType( returnType ), m_flags( flags ) {}
 
-    void add( const std::shared_ptr< Unit >& unit, Flags /* flags */ = 0 ) {
+    void add( const std::shared_ptr< Unit >& unit, Flags /* flags */ = 0 ) override {
         m_body.push_back( unit );
     }
 

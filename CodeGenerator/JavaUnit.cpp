@@ -10,10 +10,11 @@ std::string JavaClassUnit::compile(unsigned int level) const {
 
         for (const auto& f : m_fields[i]) {
             result += f->compile(level + 1);
+            result += "\n";
         }
     }
 
-    result += generateShift(level) + "};\n\n";
+    result += generateShift(level) + "};\n";
     return result;
 }
 

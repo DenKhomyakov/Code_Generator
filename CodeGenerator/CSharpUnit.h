@@ -7,7 +7,7 @@ class CSharpClassUnit : public ClassUnit {
 public:
     CSharpClassUnit(const std::string& name) : ClassUnit(name) {}
 
-    std::string compile(unsigned int level = 0) const;
+    std::string compile(unsigned int level = 0) const override;
 };
 
 class CSharpMethodUnit : public MethodUnit {
@@ -25,14 +25,14 @@ public:
 public:
     CSharpMethodUnit(const std::string& name, const std::string& returnType, Flags flags) : MethodUnit(name, returnType, flags) {}
 
-    std::string compile(unsigned int level = 0) const;
+    std::string compile(unsigned int level = 0) const override;
 };
 
 class CSharpPrintOperatorUnit : public PrintOperatorUnit {
 public:
     CSharpPrintOperatorUnit(const std::string& text) : PrintOperatorUnit(text) {}
 
-    std::string compile(unsigned int level = 0) const;
+    std::string compile(unsigned int level = 0) const override;
 };
 
 

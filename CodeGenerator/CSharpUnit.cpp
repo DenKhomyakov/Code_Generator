@@ -10,10 +10,11 @@ std::string CSharpClassUnit::compile(unsigned int level) const {
 
         for (const auto& f : m_fields[i]) {
             result += f->compile(level + 1);
+            result += "\n";
         }
     }
 
-    result += generateShift(level) + "}\n\n";
+    result += generateShift(level) + "}\n";
     return result;
 }
 
@@ -51,5 +52,5 @@ std::string CSharpMethodUnit::compile(unsigned int level) const {
 }
 
 std::string CSharpPrintOperatorUnit::compile(unsigned int level) const {
-    return generateShift(level) + "Console.WriteLine( $\"" + m_text + "\" );\n";
+    return generateShift(level) + "Console.WriteLine( \"" + m_text + "\" );\n";
 }

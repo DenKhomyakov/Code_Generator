@@ -12,12 +12,11 @@ std::string CPlusPlusClassUnit::compile(unsigned int level) const {
 
         for (const auto& f : m_fields[i]) {
             result += f->compile(level + 1);
+            result += "\n";
         }
-
-        result += "\n";
     }
 
-    result += generateShift(level) + "}; \n\n";
+    result += generateShift(level) + "};\n";
     return result;
 }
 
@@ -34,7 +33,7 @@ std::string CPlusPlusMethodUnit::compile(unsigned int level) const {
     result += m_name + "()";
 
     if (m_flags & CONST) {
-        result += "const ";
+        result += " const";
     }
 
     result += " {\n";
